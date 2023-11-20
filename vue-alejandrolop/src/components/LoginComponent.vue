@@ -2,7 +2,7 @@
   <div>
     <h1>Iniciar sesión</h1>
     <hr class="border border-success opacity-100" />
-    <form @submit.prevent="loginUser">
+    <form @submit.prevent="loginUser()">
       <div class="mt-3">
         <label class="form-label">Email</label>
         <input type="text" v-model="email" class="form-control" />
@@ -11,9 +11,7 @@
         <label class="form-label">Contraseña</label>
         <input type="text" v-model="password" class="form-control" />
       </div>
-      <button @click.prevent="loginUser" class="btn btn-primary w-100 mt-3">
-        Iniciar sesión
-      </button>
+      <button class="btn btn-primary w-100 mt-3">Iniciar sesión</button>
     </form>
   </div>
 </template>
@@ -32,13 +30,13 @@ export default {
     };
   },
   mounted() {
-    if (Global.tokenUser.length != 0) this.$router.push("/");
+    if (Global.tokenUser.length != 0) this.$router.push("/perfil"); // no puede loguearse si ya está logueado
   },
   methods: {
     loginUser() {
       service.loginUser(this.email, this.password).then((result) => {
         Global.tokenUser = result.response;
-        this.$router.push("/");
+        this.$router.push("/perfil");
       });
     },
   },
