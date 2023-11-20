@@ -31,7 +31,7 @@ export default {
     };
   },
   mounted() {
-    if (Global.tokenUser.length == 0) this.$router.push("/");
+    if (Global.tokenUser.length == 0) this.$router.push("/login");
     service.getCubos().then((result) => {
       this.cubos = result;
     });

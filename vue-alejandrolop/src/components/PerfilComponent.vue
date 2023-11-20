@@ -16,7 +16,7 @@
         </tr>
       </tbody>
     </table>
-    <router-link class="btn btn-primary w-100 mt-3">
+    <router-link class="btn btn-primary w-100 mt-3" to="/compras">
       Mostrar compras
     </router-link>
   </div>
@@ -36,9 +36,8 @@ export default {
     };
   },
   mounted() {
-    if (Global.tokenUser.length == 0) this.$router.push("/");
+    if (Global.tokenUser.length == 0) this.$router.push("/login");
     service.getPerfilUser().then((result) => {
-      console.log(result);
       this.perfil = result;
     });
   },

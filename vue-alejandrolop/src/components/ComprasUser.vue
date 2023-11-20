@@ -47,7 +47,7 @@ export default {
     };
   },
   mounted() {
-    if (Global.tokenUser.length == 0) this.$router.push("/");
+    if (Global.tokenUser.length == 0) this.$router.push("/login");
     service.getCompras().then((result) => {
       this.compras = result;
     });
