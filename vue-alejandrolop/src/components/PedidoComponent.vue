@@ -27,7 +27,7 @@ export default {
   data() {
     return {
       cubos: [],
-      cubo: 0,
+      cubo: 1,
     };
   },
   mounted() {

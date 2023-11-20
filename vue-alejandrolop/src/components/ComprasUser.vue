@@ -1,9 +1,9 @@
 <template>
-  <div v-if="compras">
+  <div>
     <h1>Tus compras</h1>
     <hr class="border border-success opacity-100" />
-    <table class="table">
-      <thead>
+    <table class="table" v-if="compras">
+      <thead class="border-success">
         <tr>
           <th>Núm. Pedido</th>
           <th>ID Cubo</th>
@@ -18,6 +18,7 @@
         </tr>
       </tbody>
     </table>
+    <img v-else class="mx-auto d-block" src="../assets/images/loading.gif" />
     <div class="row">
       <div class="col-6">
         <router-link class="btn btn-primary w-100 mt-3" to="/perfil">
@@ -31,7 +32,6 @@
       </div>
     </div>
   </div>
-  <img v-else class="mx-auto d-block" src="../assets/images/loading.gif" />
 </template>
 
 <script>
