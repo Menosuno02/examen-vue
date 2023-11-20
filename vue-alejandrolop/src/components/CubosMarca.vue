@@ -1,9 +1,11 @@
 <template>
-  <div>
-    <h1>Bienvenido</h1>
+  <div v-if="cubos.length > 0">
+    <h1>
+      Cubos de la marca <span class="text-success">{{ marca }}</span>
+    </h1>
     <hr class="border border-success opacity-100" />
-    <div class="row" v-if="cubos.length > 0">
-      <div class="col-3 mb-3" v-for="cubo in cubos" :key="cubo">
+    <div class="row">
+      <div class="col-4 mb-3" v-for="cubo in cubos" :key="cubo">
         <div class="card">
           <img class="card-img-top" :src="cubo.imagen" />
           <div class="card-body">
@@ -19,8 +21,8 @@
         </div>
       </div>
     </div>
-    <img v-else class="mx-auto d-block" src="../assets/images/loading.gif" />
   </div>
+  <img v-else class="mx-auto d-block" src="../assets/images/loading.gif" />
 </template>
 
 <script>
@@ -28,16 +30,28 @@ import ServiceCubos from "../services/ServiceCubos";
 const service = new ServiceCubos();
 
 export default {
-  name: "HomeComponent",
+  name: "CubosMarca",
+  watch: {
+    "$route.params.marca"(nextVal, oldVal) {
+      if (nextVal != oldVal) this.getCubosMarca();
+    },
+  },
   data() {
     return {
       cubos: [],
+      marca: "",
     };
   },
   mounted() {
-    service.getCubos().then((result) => {
-      this.cubos = result;
-    });
+    this.getCubosMarca();
+  },
+  methods: {
+    getCubosMarca() {
+      this.marca = this.$route.params.marca;
+      service.getCubosMarca(this.marca).then((result) => {
+        this.cubos = result;
+      });
+    },
   },
 };
 </script>
