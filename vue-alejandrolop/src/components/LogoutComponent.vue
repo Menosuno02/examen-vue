@@ -10,7 +10,7 @@ import Global from "@/Global";
 export default {
   name: "LogoutComponent",
   mounted() {
-    if (Global.tokenUser.length == 0) this.$router.push("/"); // no puede desloguearse si no está logueado
+    if (Global.tokenUser.length == 0) this.$router.push("/login"); // no puede desloguearse si no está logueado
     Global.tokenUser = "";
   },
 };

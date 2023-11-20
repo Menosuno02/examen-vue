@@ -43,7 +43,7 @@ export default {
   name: "ComprasUser",
   data() {
     return {
-      compras: [],
+      compras: null,
     };
   },
   mounted() {

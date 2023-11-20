@@ -1,7 +1,7 @@
 <template>
   <div v-if="cubos.length > 0">
     <h1>Realizar pedido</h1>
-    <hr class="border border-succes opacity-100" />
+    <hr class="border border-success opacity-100" />
     <form @submit.prevent="comprarCubo()">
       <div class="mt-3">
         <label class="form-label">Elige un cubo</label>
